@@ -1,6 +1,6 @@
 # Stremio Node 20.x
 # the node version for running Stremio Web
-ARG NODE_VERSION=22-alpine
+ARG NODE_VERSION=20-alpine
 FROM node:$NODE_VERSION AS base
 
 # Setup pnpm
@@ -9,7 +9,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN corepack enable
 RUN apk add --no-cache git
-
+RUN corepack prepare pnpm@9.15.4 --activate
 # Meta
 LABEL Description="Stremio Web" Vendor="Smart Code OOD" Version="1.0.0"
 
